@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+// import PropTypes from "prop-types";
 
 export default function GameItem(props) {
   const { title, category, thumbnail } = props;
@@ -8,7 +9,7 @@ export default function GameItem(props) {
       <Link href="/detail">
         <a>
           <div className="blur-sharp">
-            <Image className="thumbnail" src={`/img/${thumbnail}.png`} width={205} height={270} alt="thumbnail" />
+            <Image className="thumbnail" src={thumbnail} width={205} height={270} alt="thumbnail" />
           </div>
           <div className="cover position-absolute bottom-0 m-32">
             <div className="d-flex flex-column h-100 justify-content-between text-decoration-none">

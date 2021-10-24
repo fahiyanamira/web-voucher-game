@@ -14,7 +14,7 @@ import "../styles/transactions.css";
 import "../styles/transactions-detail.css";
 import "../styles/edit-profile.css";
 import "../styles/navbar-log-in.css";
-import Head from "next//head";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
   return (
