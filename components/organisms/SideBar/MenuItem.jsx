@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function MenuItem(props) {
-  const { title, icon, active, href } = props;
+  const { title, icon, active, href, onKlik } = props;
   //import className dari node modules:
   const classItem = classNames({
     item: true,
@@ -11,14 +11,18 @@ export default function MenuItem(props) {
     active,
   });
   return (
-    <div className={classItem}>
-      <div class="me-3">
+    <div className={classItem} onClick={onKlik}>
+      <div className="me-3">
         <Image src={`/icon/${icon}.svg`} width={25} height={25} />
       </div>
       <p className="item-title m-0">
-        <Link href={href}>
+        {onKlik ? (
           <a className="text-lg text-decoration-none">{title}</a>
-        </Link>
+        ) : (
+          <Link href={href}>
+            <a className="text-lg text-decoration-none">{title}</a>
+          </Link>
+        )}
       </p>
     </div>
   );

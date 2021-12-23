@@ -1,5 +1,5 @@
 {
-  "name": "storegg",
+  "name": "storegg-2",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,10 +13,15 @@
   "dependencies": {
     "add": "^2.0.6",
     "aos": "^2.3.4",
+    "axios": "^0.24.0",
     "classnames": "^2.3.1",
+    "js-cookie": "^3.0.1",
+    "jwt-decode": "^3.1.2",
     "next": "11.1.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-number-format": "^4.8.0",
+    "react-toastify": "^8.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
@@ -25,7 +30,7 @@
     "@storybook/addon-links": "^6.3.11",
     "@storybook/react": "^6.3.11",
     "babel-loader": "^8.2.2",
-    "eslint": "8.0.0",
+    "eslint": "^8.5.0",
     "eslint-config-next": "11.1.2"
   }
 }

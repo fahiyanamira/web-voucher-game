@@ -2,8 +2,14 @@ import CheckoutConfirmation from "../components/organisms/CheckoutConfirmation";
 import CheckoutDetail from "../components/organisms/CheckoutDetail";
 import CheckoutItem from "../components/organisms/CheckoutItem";
 import Image from "next/dist/client/image";
+//import jwt decode:
+// import jwt_decode from "jwt-decode";
 
 export default function CheckOut() {
+  // const { user } = props;
+  // cek;
+  // console.log("user: ", user);
+
   return (
     <>
       <section className="checkout mx-auto pt-md-100 pb-md-145 pt-30 pb-30">
@@ -25,4 +31,30 @@ export default function CheckOut() {
       </section>
     </>
   );
+}
+
+//cek private route didalem server side:
+export async function getServerSideProps({ req }) {
+  //cookies. nama cookiesnya token:
+  const { token } = req.cookies;
+
+  //kondisi kalau token tidak ada/user belom login:
+  if (!token) {
+    return {
+      //arahin ke sign in
+      redirect: {
+        destination: "/sign-in",
+        //tdk bersifat permanent. kalau sudah ada token akan diarahkan ke halaman checkout
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    //kalau sudah login
+    props: {
+      //ngirim data
+      // user,
+    },
+  };
 }

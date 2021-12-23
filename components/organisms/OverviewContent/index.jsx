@@ -1,7 +1,39 @@
+import { useCallback, useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import { getMemberOverview } from "../../../services/player";
 import Category from "./Category";
 import TableRow from "./TableRow";
 
 export default function OverviewContent() {
+  const [count, setCount] = useState([]);
+  const [data, setData] = useState([]);
+
+  // console.log("count: ", counts);
+  // console.log("daa: ", data);
+  // console.log("data: ", data.data);
+
+  const getMemberOverviewAPI = useCallback(async () => {
+    const response = await getMemberOverview();
+    //kondisi responnya eror:
+    if (response.error) {
+      toast.error(response.message, {
+        theme: "colored",
+      });
+    } else {
+      // cek:
+      // console.log("data counts: ", response.data.counts);
+      // console.log("data: ", response.data);
+
+      setCount(response.data.counts);
+      setData(response.data);
+    }
+  }, []);
+
+  //panggil api:
+  useEffect(() => {
+    getMemberOverviewAPI();
+  }, []);
+
   return (
     <main className="main-wrapper">
       <div className="ps-lg-0">
@@ -10,20 +42,13 @@ export default function OverviewContent() {
           <p className="text-lg fw-medium color-palette-1 mb-14">Top Up Categories</p>
           <div className="main-content">
             <div className="row">
-              <Category nominal={18000500} icon="ic-desktop">
-                Game
-                <br />
-                Desktop
-              </Category>
-              <Category nominal={8455000} icon="ic-mobile">
-                Game
-                <br />
-                Mobile
-              </Category>
-              <Category nominal={5000000} icon="ic-desktop">
-                Other
-                <br /> Categories
-              </Category>
+              {count?.map((item) => {
+                return (
+                  <Category key={item._id} nominal={item.value} icon="ic-desktop">
+                    {item.name}
+                  </Category>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -42,10 +67,19 @@ export default function OverviewContent() {
                 </tr>
               </thead>
               <tbody>
-                <TableRow image="overview-1" title="Mobile Legends: The New Battle 2021" category="Desktop" item={200} price={290000} status="Pending" />
-                <TableRow image="overview-2" title="Call of Duty:Modern" category="Desktop" item={550} price={740000} status="Success" />
-                <TableRow image="overview-3" title="Clash of Clans" category="Mobile" item={100} price={120000} status="Failed" />
-                <TableRow image="overview-4" title="The Royal Game" category="Mobile" item={225} price={200000} status="Pending" />
+                {data.data?.map((dataItem) => {
+                  return (
+                    <TableRow
+                      key={dataItem._id}
+                      image={`https://bwastoregg.herokuapp.com/uploads/${dataItem.historyVoucherTopup.thumbnail}`}
+                      title={dataItem.historyVoucherTopup.gameName}
+                      category={dataItem.category.name}
+                      item={`${dataItem.historyVoucherTopup.coinQuantity} ${dataItem.historyVoucherTopup.coinName}`}
+                      price={dataItem.value}
+                      status={dataItem.status}
+                    />
+                  );
+                })}
               </tbody>
             </table>
           </div>

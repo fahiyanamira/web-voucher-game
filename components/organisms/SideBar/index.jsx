@@ -1,9 +1,21 @@
+import Cookies from "js-cookie";
+import { useRouter } from "next/dist/client/router";
 import Footer from "./Footer";
 import MenuItem from "./MenuItem";
 import Profile from "./Profile";
 
 export default function SideBar(props) {
   const { activeMenu } = props;
+
+  const route = useRouter();
+
+  const logOut = () => {
+    // remove token cookiesnya:
+    Cookies.remove("token");
+    //arahin ke halaman lading page:
+    route.push("/sign-in");
+  };
+
   return (
     <section className="sidebar">
       <div className="content pt-50 pb-30 ps-30">
@@ -15,7 +27,7 @@ export default function SideBar(props) {
           <MenuItem title="Card" icon="ic-menu-card" href="/member" />
           <MenuItem title="Rewards" icon="ic-menu-rewards" href="/member" />
           <MenuItem title="Settings" icon="ic-menu-settings" active={activeMenu === "settings"} href="/member/edit-profile" />
-          <MenuItem title="Log Out" icon="ic-menu-logout" href="/sign-in" />
+          <MenuItem title="Log Out" icon="ic-menu-logout" onKlik={logOut} />
         </div>
         <Footer />
       </div>

@@ -9,11 +9,11 @@
             </mask>
             <g mask="url(#mask1)">
               <path d="M-12 23H33C45.1503 23 55 32.8497 55 45V96H-12V23Z" fill="#695DE9" />
-              <path d="M37 55H-4" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-              <path d="M23 64L-4 64" stroke="#B7B0F4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M37 55H-4" stroke="white" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M23 64L-4 64" stroke="#B7B0F4" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
               <rect x="23" y="13" width="52" height="34" rx="13" fill="#5C52C7" />
             </g>
             <rect x="27" y="16" width="41" height="27" rx="13" fill="#2B2467" />
-            <circle cx="47.5" cy="29.5" r="5.5" stroke="white" stroke-width="4" />
+            <circle cx="47.5" cy="29.5" r="5.5" stroke="white" strokeWidth="4" />
           </g>
 </svg>
