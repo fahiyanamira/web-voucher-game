@@ -12,10 +12,6 @@ export default function Auth(props) {
   const [isSignIn, setIsSignIn] = useState(false);
   const [user, setUser] = useState({
     avatar: "",
-    // email: "",
-    // id: "",
-    // phoneNumber: "",
-    // username: "",
   });
 
   const route = useRouter();

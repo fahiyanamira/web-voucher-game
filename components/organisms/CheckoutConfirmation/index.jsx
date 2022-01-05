@@ -22,6 +22,7 @@ export default function CheckoutConfirmation() {
       toast.warning("Please check the checkbox if you already transferred the money ^^", {
         theme: "colored",
       });
+      return;
     }
 
     //data yg diperluin:

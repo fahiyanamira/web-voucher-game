@@ -15,7 +15,6 @@ export default function TopUpItem(props) {
     );
   }
 
-  // const URL_IMG = process.env.NEXT_PUBLIC_IMG;
   return (
     <div className="row align-items-center">
       <div className="col-md-12 col-4">

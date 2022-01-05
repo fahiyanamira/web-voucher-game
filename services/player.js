@@ -34,6 +34,7 @@ export async function getGameCategory() {
 export async function setCheckout(data) {
   const url = `${ROOT_API}/api/v1/players/checkout`;
 
+  //panggil API, define url, method, data, token
   return callAPI({
     url,
     method: "POST",
