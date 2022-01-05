@@ -28,7 +28,7 @@ export default async function callAPI({ url, method, data, token, serverToken })
     headers,
   }).catch((err) => err.response);
 
-  if (response?.status > 300) {
+  if (response.status > 300) {
     const res = {
       error: true,
       message: response.data.message,
@@ -42,7 +42,7 @@ export default async function callAPI({ url, method, data, token, serverToken })
   //cek panjang objec response.datat. objectnya dijadiin array
   //kalau response.data > 1 => response.data
   //kalau response.data <= 1 => response.data.data
-  const { length } = Object.keys(response?.data);
+  const { length } = Object.keys(response.data);
   // console.log("length: ", length);
   const res = {
     error: false,
