@@ -1,7 +1,8 @@
-// import axios, { AxiosRequestConfig } from "axios";
 import axios from "axios";
 import Cookies from "js-cookie";
 
+//membuat function khusus panggil API yang dinamis
+//ngirim request berupa object
 export default async function callAPI({ url, method, data, token, serverToken }) {
   let headers = {};
 
@@ -41,7 +42,8 @@ export default async function callAPI({ url, method, data, token, serverToken })
   //cek panjang objec response.datat. objectnya dijadiin array
   //kalau response.data > 1 => response.data
   //kalau response.data <= 1 => response.data.data
-  const length = Object.keys(response.data).length;
+  const { length } = Object.keys(response?.data);
+  // console.log("length: ", length);
   const res = {
     error: false,
     message: "success",

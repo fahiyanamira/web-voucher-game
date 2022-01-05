@@ -65,14 +65,14 @@ export default function SignUpPhoto() {
     // cek
     // console.log("result", result);
     // //kondisi kalau error munculin message error pake toast:
-    if (result.error === 1) {
-      toast.error(`${result.message} 😱`, {
+    if (result?.error === 1) {
+      toast.error(`${result.message}`, {
         position: "top-center",
         autoClose: 5000,
         theme: "colored",
       });
     } else {
-      toast.success("Sign Up Berhasil! 👌", {
+      toast.success("Sign Up Berhasil!", {
         position: "top-center",
         autoClose: 5000,
         theme: "colored",
