@@ -4,7 +4,7 @@ import { useRouter } from "next/dist/client/router";
 import { useState } from "react";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
-// import Input from "../../components/atoms/Input";
+import Input from "../../components/atoms/Input";
 import SideBar from "../../components/organisms/SideBar";
 import { updateProfile } from "../../services/player";
 
@@ -43,8 +43,8 @@ export default function EditProfile() {
     data.append("image", user.avatar);
     data.append("name", user.name);
     data.append("phoneNumber", user.phoneNumber);
-
     const response = await updateProfile(data, user.id);
+
     if (response.error) {
       toast.error(response.message);
     } else {
@@ -90,47 +90,34 @@ export default function EditProfile() {
                   </div>
                 </div>
                 <div className="pt-30">
-                  <label htmlFor="name" className="form-label text-lg fw-medium color-palette-1 mb-10">
-                    Fullname
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control rounded-pill text-lg"
-                    id="name"
-                    name="name"
-                    aria-describedby="name"
+                  <Input
+                    label="Fullname"
                     value={user.name}
-                    onChange={(event) =>
-                      setUser({
+                    onChange={(event) => {
+                      return setUser({
                         ...user,
                         name: event.target.value,
-                      })
-                    }
+                      });
+                    }}
                   />
                 </div>
                 <div className="pt-30">
-                  <label htmlFor="name" className="form-label text-lg fw-medium color-palette-1 mb-10">
+                  {/* <label htmlFor="name" className="form-label text-lg fw-medium color-palette-1 mb-10">
                     Email
                   </label>
-                  <input type="text" disabled className="form-control rounded-pill text-lg" id="email" name="email" aria-describedby="email" value={user.email} />
+                  <input type="text" disabled className="form-control rounded-pill text-lg" id="email" name="email" aria-describedby="email" value={user.email} /> */}
+                  <Input label="Email" disabled value={user.email} />
                 </div>
                 <div className="pt-30">
-                  <label htmlFor="name" className="form-label text-lg fw-medium color-palette-1 mb-10">
-                    Phone Number
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control rounded-pill text-lg"
-                    id="email"
-                    name="email"
-                    aria-describedby="email"
+                  <Input
+                    label="Phone Number"
                     value={user.phoneNumber}
-                    onChange={(event) =>
-                      setUser({
+                    onChange={(event) => {
+                      return setUser({
                         ...user,
                         phoneNumber: event.target.value,
-                      })
-                    }
+                      });
+                    }}
                   />
                 </div>
 
