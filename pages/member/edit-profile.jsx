@@ -45,6 +45,16 @@ export default function EditProfile() {
     data.append("phoneNumber", user.phoneNumber);
     const response = await updateProfile(data, user.id);
 
+    if (user.name === "") {
+      toast.error("Input nama anda");
+      return false;
+    }
+
+    if (user.phoneNumber === "") {
+      toast.error("Input nomer telepon anda");
+      return false;
+    }
+
     if (response.error) {
       toast.error(response.message);
     } else {

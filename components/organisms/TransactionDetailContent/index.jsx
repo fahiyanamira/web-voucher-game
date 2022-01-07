@@ -1,5 +1,5 @@
 import Row from "./Row";
-
+import Link from "next/link";
 export default function TransactionsDetailContent(props) {
   const { data } = props;
 
@@ -28,7 +28,7 @@ export default function TransactionsDetailContent(props) {
                   </div>
                 </div>
                 <div>
-                  <p className="fw-medium text-center label pending m-0 rounded-pill">Pending</p>
+                  <p className="fw-medium text-center label pending m-0 rounded-pill">{data.status}</p>
                 </div>
               </div>
               <hr />
@@ -47,12 +47,22 @@ export default function TransactionsDetailContent(props) {
                 <Row label="Type" value={data.historyPayment.type} />
                 <Row label="Bank Name" value={data.historyPayment.bankName} />
                 <Row label="Bank Account Name" value={data.historyPayment.name} />
-                <Row label="Bank Number" value={data.historyPayment.noRekening} />
+                {/* <Row label="Bank Number" value={data.historyPayment.noRekening} /> */}
+                <p className="text-lg color-palette-1 mb-20">
+                  Bank Number <span className="payment-details">{data.historyPayment.noRekening}</span>
+                </p>
               </div>
-              <div className="d-md-block d-flex flex-column w-100">
+              <div className="d-sm-block d-flex flex-column w-100 gap-3">
                 <a className="btn btn-whatsapp rounded-pill fw-medium text-white border-0 text-lg" href="https://wa.me/6282110578704?text=Saya%20sudah%20melakukan%20pembayaran%20topup%20voucher%20game" role="button">
                   WhatsApp ke Admin
                 </a>
+                <br />
+                <br />
+                <Link href="/member/transactions">
+                  <a className="btn btn-whatsapp rounded-pill fw-medium text-white border-0 text-lg" role="button" rel="noreferrer">
+                    Kembali
+                  </a>
+                </Link>
               </div>
             </section>
           </div>
